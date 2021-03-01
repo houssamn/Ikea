@@ -16,11 +16,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
+    var selectedItem: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        
+        self.configuration.planeDetection = .horizontal
         self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         self.sceneView.session.run(configuration)
         
@@ -28,6 +30,38 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.itemsCollectionView.dataSource = self
         
         self.itemsCollectionView.delegate = self
+        self.registerGestureRecognizer()
+    }
+    
+    func addItem(hitTestResult: ARHitTestResult) {
+        if let selectedItem = self.selectedItem {
+            let scene = SCNScene(named: "Models.scnassets/\(selectedItem).scn")
+            let node  = (scene?.rootNode.childNode(withName: selectedItem, recursively: false))!
+            let transform = hitTestResult.worldTransform
+            // THe position of the horizontal surface is in the 3rd column
+            let thirdColumn = transform.columns.3
+            node.position = SCNVector3(thirdColumn.x, thirdColumn.y, thirdColumn.z)
+            
+            self.sceneView.scene.rootNode.addChildNode(node)
+        }
+    }
+    
+    func registerGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        let sceneView = sender.view as! ARSCNView
+        let tapLocation = sender.location(in: sceneView)
+        let hitTest = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+    
+        if !hitTest.isEmpty{
+            self.addItem(hitTestResult: hitTest.first!)
+            print("Touched a horizontal surface")
+        }else{
+            print("no match ")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,6 +78,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Triggered whenever a certain cell is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
+        self.selectedItem = itemsArray[indexPath.row]
         cell?.backgroundColor = UIColor.green
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD4A95B525ED838A00406F56 /* Models.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4A95B425ED838A00406F56 /* Models.scnassets */; };
 		BD4FDB1A25E2C1E800872F2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4FDB1925E2C1E800872F2C /* AppDelegate.swift */; };
 		BD4FDB1C25E2C1E800872F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4FDB1B25E2C1E800872F2C /* SceneDelegate.swift */; };
 		BD4FDB1E25E2C1E800872F2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4FDB1D25E2C1E800872F2C /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD4A95B425ED838A00406F56 /* Models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Models.scnassets; sourceTree = "<group>"; };
 		BD4FDB1625E2C1E800872F2C /* Ikea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4FDB1925E2C1E800872F2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD4FDB1B25E2C1E800872F2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				BD4FDB1B25E2C1E800872F2C /* SceneDelegate.swift */,
 				BD4FDB1D25E2C1E800872F2C /* ViewController.swift */,
 				BD4FDB1F25E2C1E800872F2C /* Main.storyboard */,
+				BD4A95B425ED838A00406F56 /* Models.scnassets */,
 				BD4FDB2225E2C1EB00872F2C /* Assets.xcassets */,
 				BD4FDB2425E2C1EB00872F2C /* LaunchScreen.storyboard */,
 				BD4FDB2725E2C1EB00872F2C /* Info.plist */,
@@ -128,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4FDB2625E2C1EB00872F2C /* LaunchScreen.storyboard in Resources */,
+				BD4A95B525ED838A00406F56 /* Models.scnassets in Resources */,
 				BD4FDB2325E2C1EB00872F2C /* Assets.xcassets in Resources */,
 				BD4FDB2125E2C1E800872F2C /* Main.storyboard in Resources */,
 			);
